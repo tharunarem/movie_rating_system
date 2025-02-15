@@ -1,0 +1,19 @@
+{% extends 'ratingpages/base.html' %}
+{% block title %}{{ movie.title }} Details{% endblock %}
+{% block content %}
+<h2>{{ movie.title }}</h2>
+<p>{{ movie.description }}</p>
+<p>Genre: {{ movie.genre }}</p>
+<p>Release Date: {{ movie.release_date }}</p>
+<p>Average Rating: {{ average_rating|floatformat:1 }}</p>
+
+{% if user.is_authenticated %}
+    {% if user_rating %}
+        <p>Your Rating: {{ user_rating.rating }}</p>
+    {% else %}
+        <a href="{% url 'rate_movie' movie.id %}">Rate this movie</a>
+    {% endif %}
+{% else %}
+    <p><a href="{% url 'login' %}">Log in</a> to rate this movie.</p>
+{% endif %}
+{% endblock %}

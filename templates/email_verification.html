@@ -1,0 +1,16 @@
+{% autoescape off %}
+Welcome to Movieratingsystem..
+
+Hello {{ username }},
+Please confirm your email by clicking on the following link.
+We appreciate you to create your account.
+We wish you to explore Your Knowledge in our Rating.
+
+Best regards,
+Thanking you, 
+
+Tharunkumar.
+If any issues contact : +91 6301961323
+mail id: arm.arem.tharun@gmail.com
+Click Here: http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

@@ -1,0 +1,32 @@
+{% extends 'ratingpages/base.html' %}
+{% load static %}
+{% block title %}Rate Movie{% endblock %}
+
+{% block content %}
+<h2>Rate {{ movie.title }}</h2>
+
+<div class="moive">
+{% if movie.poster %}
+<img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="movie-poster">
+{% else %}
+<img src="/media/default_poster.jpg" alt="Default Poster" class="movie-poster">
+{% endif %}
+<link rel="stylesheet" href="{% static 'css/ratemovie.css' %}">
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <label class='lb' for="rating">Your Rating (1-5):</label>
+    <select name="rating" id="rating" required>
+        <option value="1">Poor</option>
+        <option value="2">Fair</option>
+        <option value="3">Good</option>
+        <option value="4">Very Good</option>
+        <option value="5">Excellent</option>
+    </select>
+    <br><br>
+    <button class='b' type="submit">Submit Rating</button>
+</form>
+
+<a class='ar' href="{% url 'movie_list' %}">Back to Movie List</a>
+{% endblock %}

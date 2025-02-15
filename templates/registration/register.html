@@ -1,0 +1,28 @@
+{% extends "ratingpages/base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="input-group">
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div class="input-group">
+            <label>Password:</label>
+            <input type="password" name="password1" required>
+        </div>
+        <div class="input-group">
+            <label>Confirm Password:</label>
+            <input type="password" name="password2" required>
+        </div>
+        <button type="submit" class="auth-button">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock %}

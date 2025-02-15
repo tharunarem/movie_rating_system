@@ -1,0 +1,20 @@
+{% extends "ratingpages/base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <label>Username:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div class="input-group">
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+        <button type="submit" class="auth-button">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+</div>
+{% endblock %}
